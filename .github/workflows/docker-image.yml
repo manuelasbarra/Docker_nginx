@@ -30,16 +30,12 @@ jobs:
       name: production
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
-      - name: Sample Azure action
-        with:
-          credentials: ${{ secrets.AZURE_CREDENTIALS }}
-        env:
-          credentials: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: nginx_manu
+          credentials: ${{ secrets.AZURE_CREDENTIALS }}
           slot-name: production
           images: index.docker.io/${{ secrets.ContainerUsername }}/nginx_manu:${{
             github.sha }}
