@@ -36,6 +36,5 @@ jobs:
         with:
           app-name: 'nginx_manu'
           slot-name: 'production'
-          publish-profile: ${{ secrets.PublishProfile }}
           images: 'index.docker.io/${{ secrets.ContainerUsername }}/nginx_manu:${{ github.sha }}'
         
